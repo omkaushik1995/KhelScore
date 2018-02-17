@@ -1,0 +1,82 @@
+.signupbox{			
+    background-image: url("pic3.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+
+input[type=text], input[type=password] {
+    width: 90%;
+    padding: 10px;
+    background: #ff8c1a;
+    margin-top: -5%;
+    margin-left: 2%;
+    border: none;
+    color: white;
+    border-radius: 25%;
+    }
+
+input[type=text]:focus, input[type=password]:focus {
+        outline: none;
+    }
+
+hr {
+    width: 80%;
+    margin-top: -2%;
+    }
+
+.cancelbtn{
+    border: none;
+    background-color: #f44336;
+    color: white;
+    padding: 3% 7%;
+    text-align: center;
+    opacity: 0.9;
+    font-family: Comic Sans MS;
+    border-radius: 25%;
+    text-align: center;
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    }
+
+.signupbtn{
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 3% 7%;
+    text-align: center;
+    opacity: 0.9;
+    font-family: Comic Sans MS;
+    border-radius: 25%;
+    float: right;
+    margin-right: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    }
+h4 {
+    margin-left: 2%;
+    width: 95%;
+    color: white;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    }
+
+input[type=checkbox] {
+    margin-left: 2%;
+    color: white;
+    margin-top: 5%;
+}
+.heading {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    padding: 0%;
+    margin-bottom: 5%;
+    margin-top: 2%;
+}
+.regiterheaderimage {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+}

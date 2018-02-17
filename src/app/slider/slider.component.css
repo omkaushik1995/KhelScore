@@ -1,0 +1,12 @@
+ .carousel-control-prev-icon { 
+    background-image: url('../../assets/leftarrow.png') !important;
+    width: 45px;
+    height: 45px;
+}
+
+.carousel-control-next-icon {
+    background-image: url('../../assets/rightarrow.png') !important;
+    width: 45px;
+    height: 45px;
+
+}
