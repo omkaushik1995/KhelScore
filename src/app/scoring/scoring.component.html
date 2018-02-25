@@ -1,71 +1,107 @@
 <div class="modal fade" id="scoring" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog fullscreen">
-    <div class="modal-content fullscreenheight">
-      <div class="modal-body">
-      	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-       <!--<a href="#"  style="background-color: #EDC215 " class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Scorecard</a>
-       <a href="#"  style="background-color: #EDC215 " class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Setting</a>
-       <a href="#"  style="background-color: #EDC215 " class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Start</a>-->
-       <ul class="nav nav-tabs" id="myTab" role="tablist">
-		   <li class="nav-item">
-		   <a class="nav-link active" id="matchsetting-tab" data-toggle="tab" href="#matchsetting" role="tab" aria-controls="matchsetting" aria-selected="true">Match Setting</a>
-		   </li>
-		   <li class="nav-item">
-		   <a class="nav-link" id="play-tab" data-toggle="tab" href="#play" role="tab" aria-controls="play" aria-selected="false">Play</a>
-		   </li>
-		   <li class="nav-item">
-		   <a class="nav-link" id="scorecard-tab" data-toggle="tab" href="#scorecard" role="tab" aria-controls="scorecard" aria-selected="false">Score Card</a>
-		   </li>
-		</ul>
-		<div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="matchsetting" role="tabpanel" aria-labelledby="matchsetting-tab">
+  <div class="modal-content fullscreenheight">
+  <div class="modal-body">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="resetStep();">&times;</button>
+  <!--<a href="#"  style="background-color: #EDC215 " class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Scorecard</a>
+     <a href="#"  style="background-color: #EDC215 " class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Setting</a>
+     <a href="#"  style="background-color: #EDC215 " class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Start</a>-->
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+     <li class="nav-item">
+        <a class="nav-link active" id="matchsetting-tab" data-toggle="tab" href="#matchsetting" role="tab" aria-controls="matchsetting" aria-selected="true">Match Setting</a>
+     </li>
+     <li class="nav-item">
+        <a class="nav-link" id="play-tab" data-toggle="tab" href="#play" role="tab" aria-controls="play" aria-selected="false">Play</a>
+     </li>
+     <li class="nav-item">
+        <a class="nav-link" id="scorecard-tab" data-toggle="tab" href="#scorecard" role="tab" aria-controls="scorecard" aria-selected="false">Score Card</a>
+     </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+     <div class="tab-pane fade show active" id="matchsetting" role="tabpanel" aria-labelledby="matchsetting-tab">
         <br/>
         <div class="progress">
-          <div *ngIf="step >= 1" class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-          <div *ngIf="step >= 2" class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-          <div *ngIf="step >= 3" class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-          <div *ngIf="step >= 4" class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+           <div *ngIf="step >= 1" class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+           <div *ngIf="step >= 2" class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+           <div *ngIf="step >= 3" class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+           <div *ngIf="step >= 4" class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         <br/>
-       <div *ngIf="step == 2">
-         <div class="input-group">
-           <div class="input-group-prepend ">
-              <span class="input-group-text" id="">Team Name's</span>
+        <div *ngIf="step == 1">
+           <div class="input-group">
+              <div class="input-group-prepend ">
+                 <span class="input-group-text" id="">Team Name's</span>
+              </div>
+              <input type="text" class="form-control" placeholder="Team 1" [(ngModel)]="team1name">
+              <span class="span-between">VS</span>
+              <input type="text" class="form-control" placeholder="Team 2" [(ngModel)]="team2name">
+              &nbsp;
+              <button type="button" class="btn btn-outline-primary" (click)="nextStep();">Next</button>
            </div>
-           <input type="text" class="form-control" placeholder="Team 1">
-           <span class="span-between">VS</span>
-           <input type="text" class="form-control" placeholder="Team 2">
-           &nbsp;
+        </div>
+        <div *ngIf="step == 2">
+           <p style="text-align:center;">
+              <button style="margin-right:25%;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
+                {{team1name}}'s Team Players
+                </button>
+              <button style="margin-left:25%;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
+                {{team2name}}'s Team  Players
+                </button>
+           </p>
+           <div class="row">
+              <div class="col">
+                 <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body">
+                        <form class="form-inline">
+                            <div class="form-group mx-sm-3 mb-2" *ngFor="let minPlayers of minNoOfPlayers; let index = index">
+                                <input type="text" class="form-control" id="team1input{{index + 1}}" placeholder="Player {{index + 1}}">
+                                &nbsp;&nbsp;
+                                <select id="team1player{{index + 1}}role" class="form-control">
+                                    <option selected>--Role--</option>
+                                    <option *ngFor="let playerRole of playerRoles;" value="{{playerRole.roleCode}}">{{playerRole.roleName}}</option>
+                                </select>
+                                &nbsp;&nbsp;
+                                <select id="team1player{{index + 1}}style" class="form-control">
+                                    <option selected>--Style--</option>
+                                    <option *ngFor="let playerStyle of playerStyles" value="{{playerStyle.styleCode}}">{{playerStyle.styleName}}</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-primary mb-2" (click)="addMinNoOfPlayers();" *ngIf="minNoOfPlayers.length <= 11" >Add</button>
+                            &nbsp;&nbsp;
+                            <button type="button" class="btn btn-primary mb-2" (click)="subractMinNoOfPlayers();" *ngIf="minNoOfPlayers.length >= 2" >Delete</button>
+                        </form>
+                    </div>
+                 </div>
+              </div>
+              <div class="col">
+                 <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card card-body">
+                        <form class="form-inline">
+                            <div class="form-group mx-sm-3 mb-2" *ngFor="let minPlayers of minNoOfPlayers; let index = index">
+                                <input type="text" class="form-control" id="team2input{{index + 1}}" placeholder="Player {{index + 1}}">
+                                &nbsp;&nbsp;
+                                <select id="team2player{{index + 1}}role" class="form-control">
+                                    <option selected>--Role--</option>
+                                    <option *ngFor="let playerRole of playerRoles;" value="{{playerRole.roleCode}}">{{playerRole.roleName}}</option>
+                                </select>
+                                &nbsp;&nbsp;
+                                <select id="team2player{{index + 1}}style" class="form-control">
+                                    <option selected>--Style--</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-primary mb-2" (click)="addMinNoOfPlayers();" *ngIf="minNoOfPlayers.length <= 11" >Add</button>
+                            &nbsp;&nbsp;
+                            <button type="button" class="btn btn-primary mb-2" (click)="subractMinNoOfPlayers();" *ngIf="minNoOfPlayers.length >= 2" >Delete</button>
+                        </form>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           <button type="button" class="btn btn-outline-primary" (click)="previousStep();">Previous</button>
            <button type="button" class="btn btn-outline-primary" (click)="nextStep();">Next</button>
         </div>
-      </div>
-      <div *ngIf="step == 1">
-        <p>
-          <button style="margin-right:10%;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">Team 1 Players</button>
-          <button style="margin-left:30%;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Team 2 Players</button>
-        </p>
-        <div class="row">
-          <div class="col">
-            <div class="collapse multi-collapse" id="multiCollapseExample1">
-              <div class="card card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="collapse multi-collapse" id="multiCollapseExample2">
-              <div class="card card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-              </div>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="btn btn-outline-primary" (click)="previousStep();">Previous</button>
-        <button type="button" class="btn btn-outline-primary" (click)="nextStep();">Next</button>
-      </div>
-      </div>
-      <div class="tab-pane fade" id="play" role="tabpanel" aria-labelledby="play-tab">...</div>
-		  <div class="tab-pane fade" id="scorecard" role="tabpanel" aria-labelledby="scorecard-tab">...</div>
-      </div>
-     
-      
+     </div>
+     <div class="tab-pane fade" id="play" role="tabpanel" aria-labelledby="play-tab">...</div>
+     <div class="tab-pane fade" id="scorecard" role="tabpanel" aria-labelledby="scorecard-tab">...</div>
+  </div>
