@@ -21,8 +21,7 @@ export class ScoringComponent implements OnInit {
 
   ngOnInit() {
     this.playerRoles = this._dataService.getPlayerRoles();
-
-    this.playerStyles = this._dataService.getPlayerStyles();
+    //this.playerStyles = this._dataService.getPlayerStyles();
   }
 
 
@@ -49,6 +48,10 @@ export class ScoringComponent implements OnInit {
     if(this.minNoOfPlayers.length >= 2) {
       this.minNoOfPlayers.length --;
     }
+  }
+
+  fetchStyle(roleCode) {
+    this.playerStyles = this._dataService.getPlayerStyles().filter((item) => item.roleCode.includes(roleCode));
   }
 
 }
